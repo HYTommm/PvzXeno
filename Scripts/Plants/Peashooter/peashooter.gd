@@ -26,7 +26,6 @@ func _process(delta):
 		attack_timer = driver.attack_timer
 		attack()
 		
-		
 	#处理死亡
 	if driver.health <= 0:
 		die()
