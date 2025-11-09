@@ -1,7 +1,7 @@
 extends Area2D
 
 @export var driver : PlantDriver
-@export var anim : AnimatedSprite2D
+@export var ZWBT:Node2D
 @onready var attack_timer = driver.attack_timer
 
 var board_row = 1
@@ -9,11 +9,11 @@ var board_column = 1
 
 
 func _ready():
-	anim.speed_scale = driver.operating_speed
-	anim.play("default")
-	
+	ZWBT=$Plant001PeaShooterSingle
 	if driver.face_foward == false:
-		$AnimatedSprite2D.flip_h = true
+		pass
+		#这里反转需要另外实现
+		#另外我设置自动播放,代码控制动画文件
 
 
 func _process(delta):

@@ -1,17 +1,14 @@
 extends Area2D
 
 @export var driver : PlantDriver
-@export var anim : AnimatedSprite2D
+@export var anim : Node2D
 @onready var attack_timer = driver.attack_timer
 
 
 
 func _ready():
-	anim.speed_scale = driver.operating_speed
-	anim.play("default")
-	
-	if driver.face_foward == false:
-		$AnimatedSprite2D.flip_h = true
+	anim=$Plant002SunFlower
+	pass
 
 
 func _process(delta):

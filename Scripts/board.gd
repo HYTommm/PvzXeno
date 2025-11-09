@@ -46,7 +46,16 @@ func _process(delta):
 		
 	if arrow_in == true and Input.is_action_just_pressed("controller_a"):
 		set_plant()
-
+# 种植植物的函数
+# 功能：当箭头在当前区域内且该位置未种植植物时，实例化选中的植物并完成种植流程
+# 流程说明：
+# 1. 检查条件：箭头是否在范围内（arrow_in为true）且当前位置无植物（not has_plant）
+# 2. 实例化植物：通过植物管理器（PlantManager）获取选中的植物并实例化
+# 3. 配置植物属性：设置植物位置为当前节点位置，记录其所在的棋盘行（board_row）和列（board_column）
+# 4. 添加到场景：将实例化的植物添加到当前节点的父节点中（使其在场景中显示）
+# 5. 更新状态：标记当前位置已种植植物（has_plant设为true），保存当前种植的植物实例（current_plant）
+# 6. 发送信号：发射plant_planted信号，携带植物实例和其所在行列的向量信息（供其他逻辑响应）
+# 7. 调试输出：打印植物所在行列的向量及当前种植的植物实例（用于开发调试）
 func set_plant():
 	if arrow_in == true and not has_plant:
 		var plant = PlantManager.selected_plant.instantiate()
