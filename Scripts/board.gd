@@ -60,19 +60,21 @@ func try_set_plant():#种植条件检查
 		set_plant_failed()
 		
 func set_plant():
-		var plant = PlantManager.selected_plant.instantiate()
+		var plant_name = SetPlantManager.selected_plant
+		var plant = PlantManager.plant_scene[plant_name].instantiate()
 		plant.position = position
 		plant.board_row = board_row
 		plant.board_column = board_column
 		get_parent().add_child(plant)
 		has_plant = true
-		current_plant = plant
+		#current_plant = plant
 		
 		plant_planted.emit(plant, Vector2(board_row, board_column))
 		#print(Vector2(board_row, board_column))
 		
 		
 		#print(current_plant)
+		#print(PlantManager.selected_plant)
 
 			
 func set_plant_failed():

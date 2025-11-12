@@ -22,7 +22,8 @@ func _ready():
 	anim = $Plant001PeaShooterSingle/AnimationPlayer
 	anim.speed_scale = driver.operating_speed
 	if driver.face_foward == false:
-		pass
+		#pass
+		scale.x = -abs(scale.x)
 		#这里反转需要另外实现
 		#另外我设置自动播放,代码控制动画文件
 
@@ -41,6 +42,9 @@ func _process(delta):
 	if driver.health <= 0:
 		die()
 		
+		
+	
+	
 func attack():
 	rdmnum = randi_range(0, 1)
 	emit_signal("attack_signal")
@@ -51,8 +55,8 @@ func attack():
 	bullet.bullet_operating_speed = driver.bullet_operating_speed
 	current_velocity = driver.bullet_velocity
 	bullet.bullet_velocity = Vector2(600, 0) + current_velocity
-	if driver.face_foward == false:
-		bullet.bullet_velocity = -bullet.bullet_velocity
+	#if driver.face_foward == false:
+		#bullet.bullet_velocity = -bullet.bullet_velocity
 	bullet.bullet_damage = driver.attack_damage
 	bullet.bullet_durable = driver.bullet_durable
 	add_child(bullet)
