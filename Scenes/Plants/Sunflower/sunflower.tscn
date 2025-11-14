@@ -14,6 +14,8 @@ driver = NodePath("PlantDriver")
 [node name="PlantDriver" parent="." index="0"]
 script = ExtResource("3_wxtgv")
 bullet_type = ExtResource("3_crrwv")
+attack_timer = 25.0
+first_attack_timer_rate = 0.5
 bullet_velocity = Vector2(600, 0)
 
 [node name="Plant002SunFlower" parent="." index="2" instance=ExtResource("2_an2b3")]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b1bna5sywqk55"]
 
 [ext_resource type="Script" uid="uid://c67q3pmrxr2fy" path="res://Scripts/UI/plant_card.gd" id="1_g6lne"]
-[ext_resource type="Texture2D" uid="uid://cdm356vgex30b" path="res://assets/image/ui/ui_card/SeedPacket_Larger.png" id="2_68qbg"]
+[ext_resource type="Texture2D" uid="uid://cuhvpaymrj6ud" path="res://assets/image/ui/ui_card/SeedPacket_Larger.png" id="2_68qbg"]
 [ext_resource type="Theme" uid="uid://b0m60dnoxt1dn" path="res://Scenes/UI/Theme/PVZ.tres" id="3_r1pew"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r1pew"]

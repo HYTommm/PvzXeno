@@ -9,10 +9,8 @@ var arrow_in = false
 var board_row : int = 1
 var board_col : int = 1
 
-var has_plant = false
-
 var current_plant = null 
-
+var plant=null
 signal plant_planted(plant_instance, board_position)
 
 func _ready():
@@ -20,11 +18,16 @@ func _ready():
 	$BoardSelector.visible = false
 func arrow_entered():
 	ArrowManager.emit_signal("cursor_moved",self)
+	select_current()
 func arrow_exited(node):#解除
 	if not node==self:
 		arrow_in = false
 		$BoardSelector.visible = false
 	else :
+		select_current()
+##选中当前
+func select_current():#替代方法,允许重复调用.
+	if not arrow_in:
 		arrow_in = true
 		$BoardSelector.visible = true
 		var self_world_position = global_position# 获取当前节点的世界坐标
@@ -43,22 +46,22 @@ func _process(_delta):
 		#try_set_plant()
 	if arrow_in == true and Input.is_action_just_pressed("controller_a"):
 		try_set_plant()
-# 种植植物的函数
+func try_set_plant():#种植条件检查
+	if arrow_in == true and plant==null:
+		set_plant()
+	else :
+		set_plant_failed()
+
 # 功能：当箭头在当前区域内且该位置未种植植物时，实例化选中的植物并完成种植流程
 # 流程说明：
-# 1. 检查条件：箭头是否在范围内（arrow_in为true）且当前位置无植物（not has_plant）
+# 1. 检查条件：箭头是否在范围内（arrow_in为true）且当前位置无植物
 # 2. 实例化植物：通过植物管理器（PlantManager）获取选中的植物并实例化
 # 3. 配置植物属性：设置植物位置为当前节点位置，记录其所在的棋盘行（board_row）和列（board_column）
 # 4. 添加到场景：将实例化的植物添加到当前节点的父节点中（使其在场景中显示）
 # 5. 更新状态：标记当前位置已种植植物（has_plant设为true），保存当前种植的植物实例（current_plant）
 # 6. 发送信号：发射plant_planted信号，携带植物实例和其所在行列的向量信息（供其他逻辑响应）
 # 7. 调试输出：打印植物所在行列的向量及当前种植的植物实例（用于开发调试）
-func try_set_plant():#种植条件检查
-	if arrow_in == true and not has_plant:
-		set_plant()
-	else :
-		set_plant_failed()
-		
+## 种植植物的函数
 func set_plant():
 		var plant_name = SetPlantManager.selected_plant
 		#print("种植",plant_name)
@@ -66,8 +69,8 @@ func set_plant():
 		plant.position = position
 		plant.board_row = board_row
 		plant.board_col = board_col
-		get_parent().add_child(plant)
-		has_plant = true
+		$plant.add_child(plant)
+		plant = $plant
 		#current_plant = plant
 		
 		plant_planted.emit(plant, Vector2(board_row, board_col))

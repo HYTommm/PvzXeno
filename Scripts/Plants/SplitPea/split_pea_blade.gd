@@ -8,8 +8,8 @@ func _enter_tree():
 	parent.face_foward = false
 	
 func _ready():
-	grandparent.current_blade_amount += 1
-	blade_id = grandparent.current_blade_amount
+	#grandparent.current_blade_amount += 1
+	#blade_id = grandparent.current_blade_amount
 	#print(blade_id)
 	
 	position = Vector2(-40,-60 + 20 * blade_id )

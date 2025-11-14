@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://bd03jxfxgxfjd"]
+
+[ext_resource type="Script" uid="uid://n0t3blir0psc" path="res://Scripts/Plants/bladepicture.gd" id="1_sy1ki"]
+[ext_resource type="Texture2D" uid="uid://ublwf1irdtxk" path="res://assets/Images/BladeIcon_Peashooter.png" id="1_vg04l"]
+
+[node name="Plantblade" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_sy1ki")
+
+[node name="blade" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 25.0
+offset_bottom = 100.0
+theme_override_constants/separation = 0
+
+[node name="blade1" type="TextureRect" parent="blade"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+texture = ExtResource("1_vg04l")
+expand_mode = 3
+
+[node name="blade2" type="TextureRect" parent="blade"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+texture = ExtResource("1_vg04l")
+expand_mode = 3
+
+[node name="blade3" type="TextureRect" parent="blade"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+texture = ExtResource("1_vg04l")
+expand_mode = 3
+
+[node name="blade4" type="TextureRect" parent="blade"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+texture = ExtResource("1_vg04l")
+expand_mode = 3

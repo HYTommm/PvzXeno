@@ -33,6 +33,10 @@ window/size/viewport_height=600
 
 project/assembly_name="pvz测试"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/script-ide/plugin.cfg")
+
 [global_group]
 
 Zombie=""

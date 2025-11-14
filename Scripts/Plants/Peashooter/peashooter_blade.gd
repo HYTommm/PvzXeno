@@ -1,7 +1,8 @@
 extends PlantBlade
-
-func effect():
-	parent.operating_speed = parent.operating_speed * 2
+func _init() -> void:
+	addonsNames="peashooter"
+func effect(plant):
+	plant.operating_speed = plant.operating_speed * 2
 
 
 # var parent

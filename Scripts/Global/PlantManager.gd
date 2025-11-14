@@ -13,6 +13,20 @@ var plant_anim={
 	"peashooter":"plant_001_pea_shooter_single.tscn",#豌豆射手
 	"sunflower":"plant_002_sun_flower.tscn"#向日葵
 	}
+##植物插件图片字典
+var plant_Blade = {
+	"blankPlant":preload("res://assets/Images/BladeIcon_blankPlant.png"),#空白植物
+	"peashooter":preload("res://assets/Images/BladeIcon_Peashooter.png"),#豌豆射手
+	"sunflower":preload("res://assets/Images/BladeIcon_Sunflower.png"),#向日葵
+	}
+## 查询植物插件图片的函数
+func get_plant_image(plant_name: String) -> Texture2D:
+	# 检查字典中是否存在该植物名称
+	if plant_Blade.has(plant_name):
+		return plant_Blade[plant_name]
+	else:
+		# 找不到时返回第一个元素（blankPlant）
+		return plant_Blade.values()[0]
 ##目录用于快速定义关联文件,不在代码内使用
 @warning_ignore("shadowed_global_identifier")
 ##植物卡片
