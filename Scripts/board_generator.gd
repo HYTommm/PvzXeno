@@ -39,7 +39,7 @@ func generate_grid(_n: int, _m: int):
 			# 设置节点名称格式为 _行_列（从1开始计数）
 			board.name = "Cell_%d_%d" % [row + 1, column + 1]
 			board.board_row += row
-			board.board_column += column
+			board.board_col += column
 			add_child(board)
 			plot_array+=[board]
 			# 计算位置

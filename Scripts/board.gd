@@ -6,8 +6,8 @@ extends Control
 #var control_type = "mouse"
 var arrow_in = false
 
-var board_row = 1
-var board_column = 1
+var board_row : int = 1
+var board_col : int = 1
 
 var has_plant = false
 
@@ -62,16 +62,16 @@ func try_set_plant():#种植条件检查
 func set_plant():
 		var plant_name = SetPlantManager.selected_plant
 		#print("种植",plant_name)
-		var plant = PlantManager.plant_scene[plant_name].instantiate()
+		var plant : PlantBase = PlantManager.plant_scene[plant_name].instantiate()
 		plant.position = position
 		plant.board_row = board_row
-		plant.board_column = board_column
+		plant.board_col = board_col
 		get_parent().add_child(plant)
 		has_plant = true
 		#current_plant = plant
 		
-		plant_planted.emit(plant, Vector2(board_row, board_column))
-		#print(Vector2(board_row, board_column))
+		plant_planted.emit(plant, Vector2(board_row, board_col))
+		#print(Vector2(board_row, board_col))
 		
 		
 		#print(current_plant)

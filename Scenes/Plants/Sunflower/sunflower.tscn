@@ -1,16 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://dgsqnoe5atyb4"]
+[gd_scene load_steps=6 format=3 uid="uid://dgsqnoe5atyb4"]
 
 [ext_resource type="Script" uid="uid://bot4wbt7422ek" path="res://Scripts/Plants/Sunflower/sunflower.gd" id="1_yahmr"]
 [ext_resource type="PackedScene" uid="uid://cdwcageinhknb" path="res://Scenes/Plants/plant_scene/plant_002_sun_flower.tscn" id="2_an2b3"]
 [ext_resource type="PackedScene" uid="uid://cu038f2q2tgf7" path="res://Scenes/Bullet/bullet_sun.tscn" id="3_crrwv"]
+[ext_resource type="Script" uid="uid://cx3gw27d82qn6" path="res://Scripts/Plants/Sunflower/sunflower_driver.gd" id="3_wxtgv"]
 [ext_resource type="PackedScene" uid="uid://bogt33n2qc3tv" path="res://Scenes/Plants/plant_base.tscn" id="8_vna3r"]
 
-[node name="Sunflower" instance=ExtResource("8_vna3r")]
+[node name="Sunflower" node_paths=PackedStringArray("anim", "driver") instance=ExtResource("8_vna3r")]
 script = ExtResource("1_yahmr")
-bullet_type = ExtResource("3_crrwv")
+anim = NodePath("Plant002SunFlower/AnimationPlayer")
+driver = NodePath("PlantDriver")
 
 [node name="PlantDriver" parent="." index="0"]
+script = ExtResource("3_wxtgv")
 bullet_type = ExtResource("3_crrwv")
+bullet_velocity = Vector2(600, 0)
 
 [node name="Plant002SunFlower" parent="." index="2" instance=ExtResource("2_an2b3")]
 position = Vector2(1, 24)
+
+[editable path="Plant002SunFlower"]

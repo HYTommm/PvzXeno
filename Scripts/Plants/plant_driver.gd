@@ -15,10 +15,7 @@ class_name PlantDriver
 @export var bullet_durable		: int = 1                
 ##插件容量
 @export var blade_amount		: int = 4
-#棋盘行数（初始值为 1）
-var board_row = 1
-#棋盘列数（初始值为 1）
-var board_column = 1
+
 #原始子弹动量
 var original_bullet_velocity
 #当前速度（向量类型，未初始化）
@@ -31,7 +28,7 @@ signal attack_signal
 
 var attack_timer_delta=attack_timer
 func _ready():
-	current_velocity = bullet_velocity
+	#current_velocity = bullet_velocity
 	original_bullet_velocity = bullet_velocity
 func _process(delta):
 	attack_timer_delta -= delta * operating_speed
@@ -52,7 +49,7 @@ func attack():
 	bullet.bullet_operating_speed = bullet_operating_speed
 	#current_velocity = bullet_velocity
 	#print()
-	bullet.bullet_velocity = Vector2(600, 0) + bullet_velocity
+	bullet.bullet_velocity = bullet_velocity
 	print("current_velocity",str(bullet_velocity))
 	bullet.bullet_damage = attack_damage
 	bullet.bullet_durable = bullet_durable
